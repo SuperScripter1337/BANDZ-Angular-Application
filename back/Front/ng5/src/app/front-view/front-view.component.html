@@ -1,0 +1,9 @@
+<app-slide-show-with-search-bar></app-slide-show-with-search-bar>
+<!--<app-main-view></app-main-view>-->
+<div class="cardBox">
+  <app-event-card (click)="redirectToEventProfile(event?._id)" (mouseenter)="event.hovered = true"
+                  (mouseleave)="event.hovered = false"
+                  *ngFor="let event of events; let i=index"
+                  [event]="event">
+  </app-event-card>
+</div>

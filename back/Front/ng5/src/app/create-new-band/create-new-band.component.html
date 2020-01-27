@@ -1,0 +1,55 @@
+<main *ngIf="!uploading">
+  <header>
+    <h1 mat-dialog-title>Edit profile</h1>
+    <p>All fields marked with '*' are required</p>
+  </header>
+
+  <form #f="ngForm" action="{{apiUrl}}">
+    <mat-form-field floatLabel>
+      <mat-label>Name</mat-label>
+      <input name="name" [(ngModel)]="name" type="text" matInput placeholder="Band name" required>
+    </mat-form-field>
+
+    <mat-form-field floatLabel>
+      <mat-label>Genre</mat-label>
+      <input [(ngModel)]="genre" name="genre" type="text" matInput placeholder="Genre">
+    </mat-form-field>
+
+    <mat-form-field floatLabel>
+      <mat-label>Location</mat-label>
+      <input [(ngModel)]="location" name="location" type="text" matInput placeholder="Home town">
+    </mat-form-field>
+
+    <mat-form-field floatLabel>
+      <mat-label>Phone number</mat-label>
+      <input [(ngModel)]="phone" name="phone" type="text" matInput placeholder="Used to send sms notifications" required>
+    </mat-form-field>
+    <p *ngIf="!phoneValid()" class="alert">Please enter your phone number, used for sms notifications</p>
+
+    <label for="banner">Band Image</label>
+    <input id="banner" type="file" name="banner" (change)="handleFileInput($event.target.files)" accept=".png, .jpg, .jpeg">
+    <p *ngIf="!imageUploaded()" class="alert">Please upload an image of your band, in .jpg or .png format</p>
+
+    <mat-form-field floatLabel>
+      <mat-label>Spotify Artist or Album url</mat-label>
+      <input name="spotifyPlayerLink" [(ngModel)]="spotifyPlayerLink" matInput required placeholder="https://open.spotify.com/artist/0du5cEVh5yTK9QJze8zA0C">
+    </mat-form-field>
+    <p *ngIf="!spotifyLinkValid()" class="alert">Please enter a valid spotify album or artist link.<br>
+      Find yours at <a href="https://open.spotify.com/" target="_blank">https://open.spotify.com/</a></p>
+
+    <mat-form-field floatLabel>
+      <mat-label>Bio</mat-label>
+      <textarea [(ngModel)]="bio" name="bio" type="text" matInput
+                placeholder="Tell us something interesting about your band"
+                required></textarea>
+    </mat-form-field>
+    <div class="divider"></div>
+
+    <p *ngIf="!requiredFieldsFilled()" class="alert">Please enter your band name, and a bio for your band</p>
+
+    <button *ngIf="formValid()" mat-raised-button (click)="create()">Create</button>
+  </form>
+</main>
+<main *ngIf="uploading">
+  <p>Creating your band profile now... Please wait</p>
+</main>

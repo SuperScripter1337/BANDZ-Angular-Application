@@ -1,0 +1,27 @@
+<main>
+  <div class="banner" [ngStyle]="{'background-image': 'url(' + banner + ')'}"></div>
+  <div class="headWrap">
+    <div class="title">
+      <h1>{{ title }}</h1>
+      <h2>{{location}}</h2>
+      <h2>${{price}}</h2>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button (click)="buyTickets()">Buy tickets {{event?.price|currency}}</button>
+    </div>
+  </div>
+<div class="content">
+    <article>
+      <p>{{ bio }}</p>
+    </article>
+
+    <iframe [src]="spotifyPlayerLink | safeUrl" width="300" height="380"
+            frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    <aside>
+      <img *ngIf="isVenue" src="../../assets/images/fakeMap.JPG">
+    </aside>
+  </div>
+
+  <button *ngIf="authService.loggedIn()" mat-raised-button (click)="deleteProfile()">Delete Event</button>
+</main>

@@ -1,0 +1,31 @@
+<div class="slide-show">
+  <div class="content">
+    <div class="innerWrapper">
+      <h1>
+        Search for great shows in your area.
+      </h1>
+      <form [style.border-bottom]="isActive() ? '2px solid #d1d1d1': 'none'">
+        <div class="search-wrapper">
+          <img src="../../../assets/images/search.svg">
+          <input (focus)="changeActive()" class="text-box" title='search' type="text" name="search"
+                 placeholder={{searchContent[counter]}} [(ngModel)]="searchQuery">
+        </div>
+        <input class="btn" title="submit" type="submit" value="Search" (click)="redirectToMainPage(searchQuery)">
+      </form>
+      <div class="additionalInformationWrapper" [style.display]="isActive() ? 'block': 'none'">
+        <div class="innerWrapper">
+          <h3 class="title">
+            Explore
+            <b>BANDS</b>
+          </h3>
+          <button class="myButton" (click)="redirectToMainPage(searchQuery)">All</button>
+          <button class="myButton" (click)="redirectToMainPageBandsOnly(searchQuery)">Bands</button>
+          <button class="myButton" (click)="redirectToMainPageEventsOnly(searchQuery)">Events</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper" [ngStyle]="{'background-image': 'url(assets/images/' + pathsArray[counter]+ ')'}">
+    <div class="overlayShadow"></div>
+  </div>
+</div>

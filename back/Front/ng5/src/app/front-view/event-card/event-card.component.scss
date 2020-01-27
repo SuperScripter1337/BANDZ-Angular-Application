@@ -1,0 +1,85 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../../../variables.scss";
+
+p {
+  display: block;
+  height: 1em;
+  color: black;
+}
+
+.suggestionsGallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
+  grid-gap: 1em;
+
+}
+
+.hotItem {
+  position: absolute;
+  left: 3em;
+  top: 11em;
+  height: 30px;
+  width: 30px;
+  z-index: 1;
+  // border: 1px red solid;
+}
+
+.newItem {
+  position: absolute;
+  height: 5em;
+  width: 3em;
+  z-index: 2;
+  // border: 1px red solid;
+}
+
+mat-card {
+  margin-bottom: 1em;
+}
+
+mat-card-content {
+  margin-top: 0.5em;
+  line-height: 1.8;
+}
+
+.price {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.venueName, .venueAddress {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.venueAddress,
+.venueName, .eventName {
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+// .contents{
+//   margin-bottom:-2em !important;
+// }
+
+.Image {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  img {
+    object-fit: cover;
+
+  }
+}
+
+.Image:hover {
+  opacity: 0.8;
+}
+
+

@@ -1,0 +1,60 @@
+<main [@resizeProfile]='state'>
+  <!--<div class="banner"><img src="{{band?.image}}" alt="{{band?.name}}"></div>-->
+  <div class="banner" [ngStyle]="{'background-image': 'url(' + image + ')'}"></div>
+  <div class="headWrap">
+    <div class="title">
+      <h1>{{ band?.name }}</h1>
+      <h2>{{band?.city}}. {{band?.genre}}</h2>
+
+
+    </div>
+    <div class="buttons">
+      <star-rating-comp class="rating" [size]="'medium'" [readOnly]="false" [hoverEnabled]="true" [showHalfStars]="true"
+                        class="ratingImage" [starType]="'svg'" [rating]="5"></star-rating-comp>
+      <button class="message" (click)="showFirst=!showFirst" *ngIf="authService.loggedIn()" mat-raised-button
+              (click)="toggleChatBox()">Message <i class="material-icons" *ngIf="showFirst">drafts</i><i
+        class="material-icons" *ngIf="!showFirst">
+        mail
+      </i><i class="material-icons" *ngIf="!showFirst">
+        keyboard_arrow_left
+      </i><i class="material-icons" *ngIf="showFirst">
+        keyboard_arrow_right
+      </i></button>
+      <button *ngIf="showContent" mat-raised-button (click)="toggleContentGigs()">Gigs</button>
+      <button *ngIf="showGigs" mat-raised-button (click)="toggleContentGigs()">Profile</button>
+    </div>
+  </div>
+
+  <div *ngIf="showContent" class="content">
+    <article>
+      <p>{{ band?.description }}</p>
+    </article>
+    <aside>
+      <iframe [src]="spotifyPlayerLink | safeUrl" width="300" height="420"
+              frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </aside>
+  </div>
+
+  <ng-container *ngIf="showGigs">
+    <div class="event" *ngFor="let event of gigs">
+      <div class="title">
+        <h1><a [href]="'/#/eventDetails/' + event?._id">{{ event?.name }}</a></h1>
+        <h2>{{ event?.date}} | {{ event?.venueName}} | {{ event?.location.city}}</h2>
+      </div>
+      <button mat-raised-button (click)="buyTickets(event?._id)">Buy tickets {{event?.price|currency}}</button>
+    </div>
+
+    <p *ngIf="gigs.length == 0">This band has no upcoming gigs</p>
+
+    <div class="event">
+      <div class="title">
+      </div>
+      <button *ngIf="authService.loggedIn()" class="bigRed" mat-raised-button (click)="createEvent()">Add a gig</button>
+    </div>
+
+  </ng-container>
+  <app-chat-box *ngIf=isChatBoxActive></app-chat-box>
+  <button *ngIf="!showGigs && authService.loggedIn()" mat-raised-button (click)="deleteProfile()">Delete Band</button>
+  <button *ngIf="!showGigs && authService.loggedIn()" mat-raised-button (click)="editText()">Edit text</button>
+
+</main>

@@ -1,0 +1,40 @@
+@import "../../variables.scss";
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+mat-dialog-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 200px;
+}
+button{
+  background-color: $color-accent;
+  color: $color-lighter;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.alert{
+  background: orangered;
+  padding: 10px;
+  border-radius: 3px;
+}
