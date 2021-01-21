@@ -30,7 +30,7 @@
     "passport-jwt": "*",
     "paypal-rest-sdk": "^1.8.1",
     "pdfkit": "^0.8.3",
-    "socket.io": "^2.1.0",
+    "socket.io": "^2.4.0",
     "twilio": "^3.17.0"
   },
   "author": "Maciej Czarnota, Alex Miller, Mateusz Czarnota",
