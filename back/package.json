@@ -25,7 +25,7 @@
     "nexmo": "^2.2.1",
     "ng2-slider-component": "^1.0.9",
     "node-geocoder": "^3.22.0",
-    "nodemailer": "^4.6.4",
+    "nodemailer": "^6.4.16",
     "passport": "*",
     "passport-jwt": "*",
     "paypal-rest-sdk": "^1.8.1",
